@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year My Love ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+
+<style>
+/* ===== خلفية متدرجة ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  background: radial-gradient(#0b0c40, #1a1a2e);
+  color: #fff;
+  text-align: center;
+}
+
+/* خلفية فيديو */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  filter: brightness(0.6);
+}
+
+/* عنوان رئيسي */
+h1 {
+  font-size: 3em;
+  margin-top: 40px;
+  font-family: 'Sacramento', cursive;
+  animation: fadeDown 2s;
+  padding: 0 10px;
+}
+
+/* Slider صور أفقي */
+.slider {
+  width: 90%;
+  max-width: 400px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+/* رسالة رومانسية */
+.message {
+  max-width: 90%;
+  margin: 30px auto;
+  font-size: 1.3em;
+  background: rgba(0,0,0,0.35);
+  padding: 25px;
+  border-radius: 25px;
+  animation: fadeUp 3s;
+}
+
+/* زر الموسيقى */
+#musicBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 10;
+}
+
+/* Footer */
+footer {
+  margin: 40px 0 20px 0;
+  opacity: 0.7;
+  font-size: 0.9em;
+}
+
+/* نجوم تتساقط */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite alternate;
+}
+
+/* Animations */
+@keyframes fadeDown {from {opacity:0; transform: translateY(-30px);} to {opacity:1; transform: translateY(0);}}
+@keyframes fadeUp {from {opacity:0; transform: translateY(30px);} to {opacity:1; transform: translateY(0);}}
+@keyframes twinkle {from {opacity:0;} to {opacity:1;}}
+</style>
+</head>
+
+<body>
+
+<!-- فيديو خلفية -->
+<video autoplay muted loop id="bg-video">
+  <source src="fireworks.mp4" type="video/mp4">
+</video>
+
+<h1>🎆 Marry Me ? ❤️🎆</h1>
+
+<!-- Slider صور أفقي -->
+<div class="slider">
+  <div class="slides">
+    <img src="photo_2026-01-15_03-26-19.jpg" alt="Us">
+    <img src="photo_2026-01-15_03-23-09.jpg" alt="Us">
+    <img src="photo_2026-01-15_03-23-15.jpg" alt="Us">
+    <img src="photo_2026-01-15_03-23-19.jpg" alt="Us">
+    <img src="photo_2026-01-15_03-23-23.jpg" alt="Us">
+  </div>
+</div>
+
+<div class="message">
+  <p> Love You Baby 😘
+ </div>
+
+<button id="musicBtn">🎵 Play / Pause Music</button>
+
+<footer>Made with Mickool just for you ❤️ </footer>
+
+<audio id="music" loop>
+  <source src="Amr Diab - Bahebak Ana (Official Lyric Video)  (كلمات) عمرو دياب - بحبك أنا.mp3" type="audio/mp3">
+</audio>
+
+<script>
+// ===== Slider تلقائي أفقي =====
+let index = 0;
+const slides = document.querySelector('.slides');
+const total = slides.children.length;
+
+setInterval(() => {
+  index++;
+  if(index >= total) index = 0;
+  slides.style.transform = `translateX(-${index * 100}%)`;
+}, 3000);
+
+// ===== نجوم في الخلفية =====
+for(let i=0; i<100; i++){
+  let star = document.createElement('div');
+  star.className = 'star';
+  star.style.top = Math.random() * window.innerHeight + 'px';
+  star.style.left = Math.random() * window.innerWidth + 'px';
+  star.style.width = star.style.height = Math.random()*3 + 1 + 'px';
+  document.body.appendChild(star);
+}
+
+// ===== زر الموسيقى =====
+const music = document.getElementById('music');
+const btn = document.getElementById('musicBtn');
+btn.addEventListener('click', () => {
+  if(music.paused){ music.play(); btn.innerText="🎵 Pause Music"; } 
+  else { music.pause(); btn.innerText="🎵 Play Music"; }
+});
+</script>
+
+
+</body>
+</html>
